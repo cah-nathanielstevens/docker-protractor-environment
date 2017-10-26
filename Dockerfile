@@ -1,4 +1,4 @@
-FROM node:6.9.4-slim
+FROM node:8-slim
 WORKDIR /tmp
 
 RUN npm install -g protractor && \
@@ -6,6 +6,7 @@ RUN npm install -g protractor && \
     echo "deb http://ftp.debian.org/debian jessie-backports main" >> /etc/apt/sources.list && \
     apt-get update && \
     apt-get install -y xvfb wget sudo && \
+    apt-get install bzip2 && \
     sudo apt-get install --assume-yes apt-transport-https&& \
     wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add - && \
     sudo sh -c 'echo "deb https://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list' && \
